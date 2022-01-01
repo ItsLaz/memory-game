@@ -7,4 +7,5 @@ body {
     text-align: center;
     background: #09203f;
     color: #fff;
+    box-sizing: border-box;
 }

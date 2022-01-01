@@ -1,6 +1,9 @@
 .App {
-    max-width: 860px;
-    margin: 40px auto;
+    max-width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 button {
     background: none;
@@ -20,6 +23,13 @@ button:hover {
 .card-grid {
     margin-top: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
+}
+
+.difficulty {
+    margin-top: 12px;
+}
+.difficulty button {
+    margin: 0 12px;
 }
