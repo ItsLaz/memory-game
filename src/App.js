@@ -94,7 +94,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Memory Match</h1>
+            <h1>One Piece Memory Match</h1>
             <button onClick={shuffleCards}>New Game</button>
             <div className="difficulty">
                 <button onClick={() => setMode(easyMode)}>Easy</button>
