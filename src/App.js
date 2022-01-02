@@ -53,6 +53,11 @@ function App() {
         setTurns(0);
     }, [mode]);
 
+    // for (let index = 0; index < cards.length; index++) {
+    //     console.log(cards[index].matched);
+    // }
+    const finishedGame = (arr) => arr.every((i) => i.matched === true);
+
     //handle choice
     const handleChoice = (card) => {
         choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
@@ -117,7 +122,8 @@ function App() {
                     />
                 ))}
             </div>
-            <p>Turns: {turns}</p>
+            {!finishedGame(cards) && <p>Turns: {turns}</p>}
+            {finishedGame(cards) && <p>Game finished with {turns} turns</p>}
         </div>
     );
 }
