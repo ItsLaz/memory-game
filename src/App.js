@@ -41,6 +41,7 @@ function App() {
     const [choiceTwo, setChoiceTwo] = useState(null);
     const [disabled, setDisabled] = useState(false);
     const [mode, setMode] = useState(easyMode);
+    const [difficulty, setDifficulty] = useState('easy');
 
     //shuffle cards
     const shuffleCards = useCallback(() => {
@@ -53,9 +54,7 @@ function App() {
         setTurns(0);
     }, [mode]);
 
-    // for (let index = 0; index < cards.length; index++) {
-    //     console.log(cards[index].matched);
-    // }
+    //check if game is done
     const finishedGame = (arr) => arr.every((i) => i.matched === true);
 
     //handle choice
@@ -102,12 +101,57 @@ function App() {
             <h1>One Piece Memory Match</h1>
             <button onClick={shuffleCards}>New Game</button>
             <div className="difficulty">
-                <button onClick={() => setMode(easyMode)}>Easy</button>
+                <input
+                    type="radio"
+                    id="control_01"
+                    name="select"
+                    value="1"
+                    defaultChecked
+                    onClick={() => {
+                        setDifficulty('easy');
+                        setMode(easyMode);
+                    }}
+                />
+                <label htmlFor="control_01">Easy</label>
+                <input
+                    type="radio"
+                    id="control_02"
+                    name="select"
+                    value="2"
+                    onClick={() => {
+                        setDifficulty('medium');
+                        setMode(mediumMode);
+                    }}
+                />
+                <label htmlFor="control_02">Medium</label>
+                <input
+                    type="radio"
+                    id="control_03"
+                    name="select"
+                    value="3"
+                    onClick={() => {
+                        setDifficulty('hard');
+                        setMode(hardMode);
+                    }}
+                />
+                <label htmlFor="control_03">Hard</label>
+                <input
+                    type="radio"
+                    id="control_04"
+                    name="select"
+                    value="4"
+                    onClick={() => {
+                        setDifficulty('expert');
+                        setMode(expertMode);
+                    }}
+                />
+                <label htmlFor="control_04">Expert</label>
+                {/* <button onClick={() => setMode(easyMode)}>Easy</button>
                 <button onClick={() => setMode(mediumMode)}>Medium</button>
                 <button onClick={() => setMode(hardMode)}>Hard</button>
-                <button onClick={() => setMode(expertMode)}>Expert</button>
+                <button onClick={() => setMode(expertMode)}>Expert</button> */}
             </div>
-            <div className="card-grid">
+            <div className={`card-grid ${difficulty}`}>
                 {cards.map((card) => (
                     <SingleCard
                         key={card.id}
